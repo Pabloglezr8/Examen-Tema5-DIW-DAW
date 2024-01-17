@@ -12,7 +12,7 @@ const validar = event => {
     mensajeError = []
 
     nombre.value.trim().length === 0 && mensajeError.push('El campo Nombre no puede estar vacío')
-    !/^[a-zA-Z]*$/.test(nombre.value.trim()) && mensajeError.push('El nombre no tiene caracteres válidos')
+    !/^[A-Z].{1}[a-zA-Z]*$/.test(nombre.value.trim()) && mensajeError.push('El nombre no tiene caracteres válidos')
     
     !/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/.test(mail.value.trim()) && mensajeError.push('Introduce una dirección de correo electrónico válida')
     

@@ -18,7 +18,8 @@ body {
     width: 100vw;
     position: relative;
     height: 250px;
-    clip-path: polygon(0 0, 100% 0, 100% 89%, 0% 100%);
+    clip-path: ellipse(50% 50% at 50% 50%);
+
 }
 
 
@@ -42,7 +43,14 @@ body {
     color: white;
 }
 
+
+.contactanos{
+    margin-top: 20px;
+    font-size: 20px;
+}
+
 .form-container {
+
     padding: 1rem;
     margin: 30px;
     width: 25rem;
@@ -97,16 +105,23 @@ textarea {
     color: white;
 }
 
+ul{
+color: rgb(160, 36, 36);
+}
+
 @media screen and (max-width: 800px) {
     .hero-container {
-        width: 100%;
+        width: 100vw;
         height: 150px;
-
     }
 
 }
 
 @media screen and (max-width: 450px) {
+    .form-container{
+        width: 300px;
+    }
+
     span {
         font-size: 15px;
     }
