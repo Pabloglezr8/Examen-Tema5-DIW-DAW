@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario Examen</title>
+    <link rel="stylesheet" href="styles/styles.css">
+</head>
+<body>
+    <div class="hero-container">
+        <div class="hero-body">
+            <h1>Asturian Nature Trails</h1>
+            <span>Las mejores rutas de montaña para hacer senderismo</span>
+        </div>
+    </div>
+
+    <div class="form-container">
+        <form action="enviado.html" method="get" id="formulario">
+            <input type="text" name="nombre" id="nombre" placeholder="Nombre">
+            <input type="text" name="mail" id="mail" placeholder="Correo Electrónico">
+
+            <label for="addInfo">Solicitud de información adicional<input type="radio" name="addInfo" id="addInfo"></label>
+            <label for=""><input type="radio" name="reserva" id="reserva">Reserva de Rutas</label>
+
+            <textarea name="opinion" id="opinion" cols="30" rows="10" placeholder="Dejanos tu opinión"></textarea>
+
+            <input type="submit" name="enviar" id="enviar">
+        </form>
+
+        <ul id="errores"></ul>
+    </div>
+</body>
+</html>
