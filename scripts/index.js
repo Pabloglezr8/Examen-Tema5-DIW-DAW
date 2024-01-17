@@ -1,39 +1,37 @@
-const formulario = document.getElementById('formulario')
-const nombre = document.getElementById('nombre')
-const mail = document.getElementById('mail')
-const addInfo = document.getElementById('addInfo')
-const reserva = document.getElementById('reserva')
-const opinion = document.getElementById('opinion')
-const enviar = document.getElementById('enviar')
+const formulario = document.querySelector('#formulario')
+const nombre = document.querySelector('#nombre')
+const mail = document.querySelector('#mail')
+const opinion = document.querySelector('#opinion')
+const enviar = document.querySelector('#enviar')
+const errores = document.querySelector("#errores")
 
-const errores = document.getElementById('errores')
+let mensajeError = []
 
-let msgError = [];
+const validar = event => {
+    event.preventDefault()
+    mensajeError = []
 
-const validar = event =>{
-    formulario.preventDefault()
-    msgError = []
-
-    nombre.ariaValueMax.trim() === 0 && msgError.push("El campo nombre no puede eestar vacío")
-    !/^[a-zA-Z]/$.test(nombre.ariaValueMax.trim()) && msgError.push("Caracteres en el nombre incorrecto")
-
-
-    if(msgError.length === 0 && confirm("¿Estas seguro?"))
-    formulario.submit()
-
-    nombre.ariaValueMax.trim() === 0 && msgError.push("El campo nombre no puede eestar vacío")
-    !/^[a-zA-Z]/$.test(nombre.ariaValueMax.trim()) && msgError.push("Caracteres en el nombre incorrecto")
-
-
-    if(msgError.length === 0 && confirm("¿Estas seguro?"))
-    formulario.submit()
     nombre.value.trim().length === 0 && mensajeError.push('El campo Nombre no puede estar vacío')
-    !/^[a-zA-Z0-9]*$/.test(nombre.value.trim()) && mensajesErrores.push('El nombre no tiene caracteres válidos')
+    !/^[a-zA-Z]*$/.test(nombre.value.trim()) && mensajeError.push('El nombre no tiene caracteres válidos')
     
-    !/^(0[1-9]|[1-2][0-9]|3[01])/(0[1-9]|1[0-2])/(19|20)/$.test(mail.value.trim()) && msgError.push('Formato de fecha incorrecto. dd/mm/aaaa')  
-
+    !/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/.test(mail.value.trim()) && mensajeError.push('Introduce una dirección de correo electrónico válida')
     
-    mensaje.value.trim().length < 10 && mensajesErrores.push('Mensaje demasiado corto')
+    opinion.value.trim().length < 10 && mensajeError.push('Mensaje demasiado corto')
+ 
 
+    if (mensajeError.length === 0 && confirm('¿Esta seguro de enviar este formulario?')) {
+        formulario.submit()
+    } else if (mensajeError.length > 0) {
+        errores.textContent = ""
+        console.log(mensajeError)
+
+        mensajeError.forEach(function (mensaje) {
+            const miLi = document.createElement("li")
+            miLi.textContent = mensaje
+            errores.appendChild(miLi)
+        })
+    }
 
 }
+
+formulario.addEventListener("submit", validar);
